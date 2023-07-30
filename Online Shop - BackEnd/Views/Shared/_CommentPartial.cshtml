@@ -1,0 +1,23 @@
+﻿@model ShopVM
+
+@foreach (var comment in Model.Comments)
+{
+    <div class="user-comment mt-3">
+        <div class="user">
+            <div class="bg-light p-2">
+                <span>@comment.AppUser.Name</span>
+                <span>@comment.CreateDate.ToString("dd.MM.yyyy")</span>
+                <div class="d-flex flex-row align-items-start">
+                    <div class="form-control ml-1 shadow-none textarea">@comment.Content</div>
+                </div>
+                @if (ViewBag.UserId == comment.AppUserId)
+                {
+                    <div class="mt-2 text-right" style="width: 100%; display: flex; justify-content: end;">
+                        <button comment-id="@comment.Id" class="btn btn-danger dlt btn-sm shadow-none">Remove</button>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
